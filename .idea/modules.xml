@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/JavaForTesters.iml" filepath="$PROJECT_DIR$/.idea/JavaForTesters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/54345.main.iml" filepath="$PROJECT_DIR$/.idea/modules/54345.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/54345.test.iml" filepath="$PROJECT_DIR$/.idea/modules/54345.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaForTesters.sandbox.main.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaForTesters.sandbox.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JavaForTesters.sandbox.test.iml" filepath="$PROJECT_DIR$/.idea/modules/JavaForTesters.sandbox.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.iml" />
