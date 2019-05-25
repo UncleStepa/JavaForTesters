@@ -2,7 +2,6 @@ package ru.stqa.pft.addressbook;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -29,7 +28,9 @@ public class ContactCreationTests {
   @Test
   public void testContactCreation() throws Exception {
     goToContactPage();
-    fillContactGroup();
+    fillContactGroup(new ContractInfo("Igor", "Igorevich", "Stankevich", "UncleStepa",
+            "Neoflex", "Saratov", "City Saratov, House 3", "+7923145444",
+            "stankevich@mail.ru"));
     submitContactCreation();
     returnToHomePage();
   }
@@ -42,38 +43,38 @@ public class ContactCreationTests {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
-  private void fillContactGroup() {
+  private void fillContactGroup(ContractInfo personInfo) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("Igor");
+    wd.findElement(By.name("firstname")).sendKeys(personInfo.getFirstname());
     wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys("Igorevich");
+    wd.findElement(By.name("middlename")).sendKeys(personInfo.getMiddlename());
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("Stankevich");
+    wd.findElement(By.name("lastname")).sendKeys(personInfo.getLastname());
     wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys("UncleStepa");
+    wd.findElement(By.name("nickname")).sendKeys(personInfo.getNickname());
     wd.findElement(By.name("company")).click();
     wd.findElement(By.name("company")).clear();
-    wd.findElement(By.name("company")).sendKeys("Neoflex");
+    wd.findElement(By.name("company")).sendKeys(personInfo.getCompanyWork());
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys("Saratov");
+    wd.findElement(By.name("home")).sendKeys(personInfo.getCityName());
     wd.findElement(By.name("address")).click();
     wd.findElement(By.name("address")).clear();
-    wd.findElement(By.name("address")).sendKeys("City Saratov, House 3");
+    wd.findElement(By.name("address")).sendKeys(personInfo.getFullAddress());
     wd.findElement(By.name("mobile")).click();
     wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys("+7923145444");
+    wd.findElement(By.name("mobile")).sendKeys(personInfo.getFhoneNumber());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("stankevich@mail.ru");
+    wd.findElement(By.name("email")).sendKeys(personInfo.getEmail());
   }
 
   private void goToContactPage() {
     wd.findElement(By.linkText("add new")).click();
   }
 
-  @AfterClass(alwaysRun = true)
+  @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     wd.quit();
   }
