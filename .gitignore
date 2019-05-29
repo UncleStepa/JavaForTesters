@@ -20,3 +20,9 @@ gradle-app.setting
 \.idea/compiler\.xml
 
 sandbox/\.idea/workspace\.xml
+
+addressbook-web-tests/build/
+
+addressbook-web-tests/\.idea/
+
+\.idea/
