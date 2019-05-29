@@ -44,4 +44,12 @@ public class ContactHelper extends HelperBase {
     public void submitDeleteContact() {
         alert();
     }
+
+    public void selectEditContract() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void updateModificationContract() {
+        click(By.name("update"));
+    }
 }
