@@ -10,7 +10,7 @@ public class ContactModification extends TestBase {
         app.getContactHelper().selectEditContract();
         app.getContactHelper().fillContactGroup(new ContractInfo("Fedor", "Fedyav", "Restov", "Povelitel",
                 "Neoflex", "Samara", "City Samara, House 3", "+79231451234",
-                "Fedor@mail.ru"));
+                "Fedor@mail.ru", null), false);
         app.getContactHelper().updateModificationContract();
         app.getContactHelper().returnToHomePage();
     }

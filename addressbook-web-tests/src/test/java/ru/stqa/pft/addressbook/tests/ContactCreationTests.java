@@ -10,7 +10,7 @@ public class ContactCreationTests extends TestBase {
     app.getNavigationHelper().goToContactPage();
     app.getContactHelper().fillContactGroup(new ContractInfo("Vasya", "Igorevich", "Stankevich", "UncleStepa",
             "Neoflex", "Saratov", "City Saratov, House 3", "+7923145444",
-            "stankevich@mail.ru"));
+            "stankevich@mail.ru", "test1"), true);
     app.getContactHelper().submitContactCreation();
     app.getContactHelper().returnToHomePage();
   }

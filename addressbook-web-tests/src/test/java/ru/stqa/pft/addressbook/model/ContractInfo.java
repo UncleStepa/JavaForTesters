@@ -10,9 +10,10 @@ public class ContractInfo {
   private final String fullAddress;
   private final String fhoneNumber;
   private final String email;
+  private String group;
 
   public ContractInfo(String firstname, String middlename, String lastname, String nickname, String companyWork, String cityName,
-                      String fullAddress, String fhoneNumber, String email) {
+                      String fullAddress, String fhoneNumber, String email, String group) {
     this.firstname = firstname;
     this.middlename = middlename;
     this.lastname = lastname;
@@ -22,6 +23,7 @@ public class ContractInfo {
     this.fullAddress = fullAddress;
     this.fhoneNumber = fhoneNumber;
     this.email = email;
+    this.group = group;
   }
 
   public String getFirstname() {
@@ -59,4 +61,6 @@ public class ContractInfo {
   public String getEmail() {
     return email;
   }
+
+  public  String getGroup() { return  group;}
 }
