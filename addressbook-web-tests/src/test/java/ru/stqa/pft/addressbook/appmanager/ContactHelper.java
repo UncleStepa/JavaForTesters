@@ -1,7 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -33,6 +32,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), personInfo.getFullAddress());
         type(By.name("mobile"), personInfo.getFhoneNumber());
         type(By.name("email"), personInfo.getEmail());
+
         if (creation) {
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(personInfo.getGroup());
         } else {
@@ -49,6 +49,10 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input"));
     }
 
+    public void goToContactCreationPage() {
+        click(By.linkText("add new"));
+    }
+
     public void submitDeleteContact() {
         alert();
     }
@@ -59,5 +63,18 @@ public class ContactHelper extends HelperBase {
 
     public void updateModificationContract() {
         click(By.name("update"));
+    }
+
+    public void createContact(ContractInfo contractInfo, boolean creation) {
+        goToContactCreationPage();
+        fillContactGroup(new ContractInfo("Vasya", "Igorevich", "Stankevich", "UncleStepa",
+                "Neoflex", "Saratov", "City Saratov, House 3", "+7923145444",
+                "stankevich@mail.ru", "test1"), true);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
+    public boolean isTeareContact() {
+        return isElementPresent(By.linkText("selected[]"));
     }
 }
