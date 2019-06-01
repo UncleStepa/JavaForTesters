@@ -75,6 +75,6 @@ public class ContactHelper extends HelperBase {
     }
 
     public boolean isTeareContact() {
-        return isElementPresent(By.linkText("selected[]"));
+        return isElementPresent(By.name("selected[]"));
     }
 }
