@@ -42,7 +42,7 @@ public class HelperBase {
           wd.findElement(locator);
           return true;
       } catch (NoSuchElementException ex){
-          return false;
+        return false;
       }
 
   }
