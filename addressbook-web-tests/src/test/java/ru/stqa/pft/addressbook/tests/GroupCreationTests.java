@@ -20,8 +20,6 @@ public class GroupCreationTests extends TestBase {
     app.getGroupHelper().createGroup(group);
     List<GroupData> after = app.getGroupHelper().getGroupCountList();
     Assert.assertEquals(after.size(), before.size() + 1);
-
-    
     before.add(group);
     Comparator<? super GroupData> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
     before.sort(byId);

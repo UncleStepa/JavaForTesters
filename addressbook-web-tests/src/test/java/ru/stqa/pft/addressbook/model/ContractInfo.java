@@ -11,6 +11,22 @@ public class ContractInfo {
   private final String fhoneNumber;
   private final String email;
   private String group;
+  private int id;
+
+  public ContractInfo(String firstname, String middlename, String lastname, String nickname, String companyWork, String cityName,
+                      String fullAddress, String fhoneNumber, String email, String group, int id) {
+    this.firstname = firstname;
+    this.middlename = middlename;
+    this.lastname = lastname;
+    this.nickname = nickname;
+    this.companyWork = companyWork;
+    this.cityName = cityName;
+    this.fullAddress = fullAddress;
+    this.fhoneNumber = fhoneNumber;
+    this.email = email;
+    this.group = group;
+    this.id = id;
+  }
 
   public ContractInfo(String firstname, String middlename, String lastname, String nickname, String companyWork, String cityName,
                       String fullAddress, String fhoneNumber, String email, String group) {
@@ -24,7 +40,10 @@ public class ContractInfo {
     this.fhoneNumber = fhoneNumber;
     this.email = email;
     this.group = group;
+    this.id = Integer.MAX_VALUE;
   }
+
+
 
   public String getFirstname() {
     return firstname;
@@ -89,5 +108,9 @@ public class ContractInfo {
     int result = firstname != null ? firstname.hashCode() : 0;
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
+  }
+
+  public int getId() {
+    return id;
   }
 }
