@@ -17,7 +17,7 @@ public class ContactDelete extends TestBase {
               "stankevich@mail.ru", "test1"), true);
     }
     List<ContractInfo> before = app.getContactHelper().getContactList();
-    app.getContactHelper().selectFirstContact();
+    app.getContactHelper().selectFirstContact(before.size() - 1);
     app.getContactHelper().deleteOneContact();
     app.getContactHelper().submitDeleteContact();
     app.getNavigationHelper().goToHomePage();

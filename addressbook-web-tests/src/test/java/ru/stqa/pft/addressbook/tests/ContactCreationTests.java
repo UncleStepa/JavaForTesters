@@ -15,7 +15,7 @@ public class ContactCreationTests extends TestBase {
     List<ContractInfo> before = app.getContactHelper().getContactList();
     ContractInfo contact = new ContractInfo("Vasya", "Igorevich", "Stankevich", "UncleStepa",
             "Neoflex", "Saratov", "City Saratov, House 3", "+7923145444",
-            "stankevich@mail.ru", "test1");
+            "stankevich@mail.ru", "test2");
     app.getContactHelper().createContact(contact, true);
     List<ContractInfo> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() + 1);

@@ -46,8 +46,8 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void selectFirstContact() {
-        click(By.name("selected[]"));
+    public void selectFirstContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteOneContact() {
@@ -62,8 +62,8 @@ public class ContactHelper extends HelperBase {
         alert();
     }
 
-    public void selectEditContract() {
-        click(By.xpath("//img[@alt='Edit']"));
+    public void selectEditContract(int index) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 
     public void updateModificationContract() {
@@ -72,12 +72,26 @@ public class ContactHelper extends HelperBase {
 
     public void createContact(ContractInfo contractInfo, boolean creation) {
         goToContactCreationPage();
-        fillContactGroup(new ContractInfo("Vasya", "Igorevich", "Stankevich", "UncleStepa",
-                "Neoflex", "Saratov", "City Saratov, House 3", "+7923145444",
-                "stankevich@mail.ru", "test1"), true);
+        fillContactGroup(contractInfo);
         submitContactCreation();
         returnToHomePage();
     }
+
+    private void fillContactGroup(ContractInfo contractInfo) {
+        if(contractInfo.getFirstname() != null) {
+            type(By.name("firstname"), contractInfo.getFirstname());
+        }
+        type(By.name("middlename"), contractInfo.getMiddlename());
+        type(By.name("lastname"), contractInfo.getLastname());
+        type(By.name("nickname"), contractInfo.getNickname());
+        type(By.name("companyWork"), contractInfo.getCompanyWork());
+        type(By.name("cityName"), contractInfo.getCityName());
+        type(By.name("fullAddress"), contractInfo.getFullAddress());
+        type(By.name("fhoneNumber"), contractInfo.getFhoneNumber());
+        type(By.name("email"), contractInfo.getEmail());
+        type(By.name("group"), contractInfo.getGroup());
+    }
+
 
     public boolean isTeareContact() {
         return isElementPresent(By.name("selected[]"));

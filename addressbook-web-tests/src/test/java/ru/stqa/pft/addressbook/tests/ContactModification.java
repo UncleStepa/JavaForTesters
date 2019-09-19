@@ -23,7 +23,7 @@ public class ContactModification extends TestBase {
         ContractInfo contact = new ContractInfo("Fedor", "Fedyav", "Restov", "Povelitel",
                 "Neoflex", "Samara", "City Samara, House 3", "+79231451234",
                 "Fedor@mail.ru", null, before.get(before.size() - 1).getId());
-        app.getContactHelper().selectEditContract();
+        app.getContactHelper().selectEditContract(before.size() - 1);
         app.getContactHelper().fillContactGroup(contact, false);
         app.getContactHelper().updateModificationContract();
         app.getContactHelper().returnToHomePage();
