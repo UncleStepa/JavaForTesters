@@ -72,24 +72,9 @@ public class ContactHelper extends HelperBase {
 
     public void createContact(ContractInfo contractInfo, boolean creation) {
         goToContactCreationPage();
-        fillContactGroup(contractInfo);
+        fillContactGroup(contractInfo, creation);
         submitContactCreation();
         returnToHomePage();
-    }
-
-    private void fillContactGroup(ContractInfo contractInfo) {
-        if(contractInfo.getFirstname() != null) {
-            type(By.name("firstname"), contractInfo.getFirstname());
-        }
-        type(By.name("middlename"), contractInfo.getMiddlename());
-        type(By.name("lastname"), contractInfo.getLastname());
-        type(By.name("nickname"), contractInfo.getNickname());
-        type(By.name("companyWork"), contractInfo.getCompanyWork());
-        type(By.name("cityName"), contractInfo.getCityName());
-        type(By.name("fullAddress"), contractInfo.getFullAddress());
-        type(By.name("fhoneNumber"), contractInfo.getFhoneNumber());
-        type(By.name("email"), contractInfo.getEmail());
-        type(By.name("group"), contractInfo.getGroup());
     }
 
 
