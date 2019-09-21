@@ -19,7 +19,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void returnToHomePage() {
-        click(By.linkText("home page"));
+        click(By.linkText("home"));
     }
 
     public void submitContactCreation() {
@@ -77,6 +77,20 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+
+    public void contactModify(int index, ContractInfo contact) {
+        selectEditContract(index);
+        fillContactGroup(contact, false);
+        updateModificationContract();
+        returnToHomePage();
+    }
+
+    public void delete(int index) {
+        selectFirstContact(index);
+        deleteOneContact();
+        submitDeleteContact();
+        returnToHomePage();
+    }
 
     public boolean isTeareContact() {
         return isElementPresent(By.name("selected[]"));
