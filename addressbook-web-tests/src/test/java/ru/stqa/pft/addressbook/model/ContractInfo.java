@@ -1,49 +1,72 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContractInfo {
-  private final String firstname;
-  private final String middlename;
-  private final String lastname;
-  private final String nickname;
-  private final String companyWork;
-  private final String cityName;
-  private final String fullAddress;
-  private final String fhoneNumber;
-  private final String email;
+  private  String firstname;
+  private  String middlename;
+  private  String lastname;
+  private  String nickname;
+  private  String companyWork;
+  private  String cityName;
+  private  String fullAddress;
+  private  String fhoneNumber;
+  private  String email;
   private String group;
-  private int id;
+  private int id = Integer.MAX_VALUE;
 
-  public ContractInfo(String firstname, String middlename, String lastname, String nickname, String companyWork, String cityName,
-                      String fullAddress, String fhoneNumber, String email, String group, int id) {
+  public ContractInfo whithFirstname(String firstname) {
     this.firstname = firstname;
+    return this;
+  }
+
+  public ContractInfo whithMiddlename(String middlename) {
     this.middlename = middlename;
+    return this;
+  }
+
+  public ContractInfo whithLastname(String lastname) {
     this.lastname = lastname;
+    return this;
+  }
+
+  public ContractInfo whithNickname(String nickname) {
     this.nickname = nickname;
+    return this;
+  }
+
+  public ContractInfo whithCompanyWork(String companyWork) {
     this.companyWork = companyWork;
+    return this;
+  }
+
+  public ContractInfo whithCityName(String cityName) {
     this.cityName = cityName;
+    return this;
+  }
+
+  public ContractInfo whithFullAddress(String fullAddress) {
     this.fullAddress = fullAddress;
+    return this;
+  }
+
+  public ContractInfo whithFhoneNumber(String fhoneNumber) {
     this.fhoneNumber = fhoneNumber;
+    return this;
+  }
+
+  public ContractInfo whithEmail(String email) {
     this.email = email;
+    return this;
+  }
+
+  public ContractInfo whithGroup(String group) {
     this.group = group;
+    return this;
+  }
+
+  public ContractInfo whithId(int id) {
     this.id = id;
+    return this;
   }
-
-  public ContractInfo(String firstname, String middlename, String lastname, String nickname, String companyWork, String cityName,
-                      String fullAddress, String fhoneNumber, String email, String group) {
-    this.firstname = firstname;
-    this.middlename = middlename;
-    this.lastname = lastname;
-    this.nickname = nickname;
-    this.companyWork = companyWork;
-    this.cityName = cityName;
-    this.fullAddress = fullAddress;
-    this.fhoneNumber = fhoneNumber;
-    this.email = email;
-    this.group = group;
-    this.id = Integer.MAX_VALUE;
-  }
-
-
 
   public String getFirstname() {
     return firstname;

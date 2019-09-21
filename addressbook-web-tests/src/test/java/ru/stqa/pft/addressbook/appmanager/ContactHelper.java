@@ -96,15 +96,14 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-  public List<ContractInfo> getContactList() {
+  public List<ContractInfo> list() {
       List<ContractInfo> contacts = new ArrayList<>();
       List<WebElement> elements = wd.findElements(By.name("entry"));
       for(WebElement element:elements){
           int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
           String lastname = element.findElement(By.xpath(".//td[2]")).getText();
           String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-          ContractInfo contact = new ContractInfo(firstname, null, lastname,null,null,null,null,null,null
-          ,null, id);
+          ContractInfo contact = new ContractInfo().whithFirstname(firstname).whithLastname(lastname).whithId(id);
           contacts.add(contact);
       }
       return contacts;
