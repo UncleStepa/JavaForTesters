@@ -13,59 +13,63 @@ public class ContractInfo {
   private String group;
   private int id = Integer.MAX_VALUE;
 
-  public ContractInfo whithFirstname(String firstname) {
+  public ContractInfo withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }
 
-  public ContractInfo whithMiddlename(String middlename) {
+  public ContractInfo withMiddlename(String middlename) {
     this.middlename = middlename;
     return this;
   }
 
-  public ContractInfo whithLastname(String lastname) {
+  public ContractInfo withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-  public ContractInfo whithNickname(String nickname) {
+  public ContractInfo withNickname(String nickname) {
     this.nickname = nickname;
     return this;
   }
 
-  public ContractInfo whithCompanyWork(String companyWork) {
+  public ContractInfo withCompanyWork(String companyWork) {
     this.companyWork = companyWork;
     return this;
   }
 
-  public ContractInfo whithCityName(String cityName) {
+  public ContractInfo withCityName(String cityName) {
     this.cityName = cityName;
     return this;
   }
 
-  public ContractInfo whithFullAddress(String fullAddress) {
+  public ContractInfo withFullAddress(String fullAddress) {
     this.fullAddress = fullAddress;
     return this;
   }
 
-  public ContractInfo whithFhoneNumber(String fhoneNumber) {
+  public ContractInfo withFhoneNumber(String fhoneNumber) {
     this.fhoneNumber = fhoneNumber;
     return this;
   }
 
-  public ContractInfo whithEmail(String email) {
+  public ContractInfo withEmail(String email) {
     this.email = email;
     return this;
   }
 
-  public ContractInfo whithGroup(String group) {
+  public ContractInfo withGroup(String group) {
     this.group = group;
     return this;
   }
 
-  public ContractInfo whithId(int id) {
+  public ContractInfo withId(int id) {
     this.id = id;
     return this;
+  }
+
+  public int getId() {
+    return id;
   }
 
   public String getFirstname() {
@@ -82,6 +86,27 @@ public class ContractInfo {
 
   public String getNickname() {
     return nickname;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContractInfo that = (ContractInfo) o;
+
+    if (id != that.id) return false;
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstname != null ? firstname.hashCode() : 0;
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + id;
+    return result;
   }
 
   public String getCompanyWork() {
@@ -114,26 +139,5 @@ public class ContractInfo {
             '}';
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
 
-    ContractInfo that = (ContractInfo) o;
-
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
-
-  }
-
-  @Override
-  public int hashCode() {
-    int result = firstname != null ? firstname.hashCode() : 0;
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    return result;
-  }
-
-  public int getId() {
-    return id;
-  }
 }

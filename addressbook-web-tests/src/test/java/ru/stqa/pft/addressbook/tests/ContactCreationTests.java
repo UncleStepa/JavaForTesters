@@ -4,25 +4,23 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContractInfo;
 
-import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation()  {
-    List<ContractInfo> before = app.contact().list();
+    Set<ContractInfo> before = app.contact().all();
     ContractInfo contact = new ContractInfo().
-            whithFirstname("Vasya").whithMiddlename("Igorevich").whithLastname("Stankevich").whithNickname("UncleStepa").whithCompanyWork("Neoflex")
-            .whithCityName("Saratov").whithFullAddress("City Saratov, House 3").whithFhoneNumber("+7923145444").whithEmail("stankevich@mail.ru")
-            .whithGroup("test1");
+            withFirstname("rebus").withMiddlename("tetrty").withLastname("Stankevich").withNickname("UncleStepa").withCompanyWork("Neoflex")
+            .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+            .withGroup("test1");
     app.contact().createContact(contact, true);
-    List<ContractInfo> after = app.contact().list();
+    Set<ContractInfo> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
     before.add(contact);
-    Comparator<? super ContractInfo> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(after, before);
   }
 }

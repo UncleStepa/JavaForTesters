@@ -5,37 +5,36 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContractInfo;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.Set;
 
 public class ContactModification extends TestBase {
 
+
+
     @BeforeMethod
     public void ensurePrecondition() {
-        if (! app.contact().isTeareContact()) {
+        if (app.contact().all().size() == 0) {
             app.contact().createContact(new ContractInfo().
-                    whithFirstname("Vasya").whithMiddlename("Igorevich").whithLastname("Stankevich").whithNickname("UncleStepa").whithCompanyWork("Neoflex")
-                    .whithCityName("Saratov").whithFullAddress("City Saratov, House 3").whithFhoneNumber("+7923145444").whithEmail("stankevich@mail.ru")
-                    .whithGroup("test1"), true);
+                    withFirstname("Vasya").withMiddlename("Igorevich").withLastname("Stankevich").withNickname("UncleStepa").withCompanyWork("Neoflex")
+                    .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+                    .withGroup("test1"), true);
         }
     }
 
+
     @Test
     public void testContactModification(){
-        List<ContractInfo> before = app.contact().list();
-        int index = before.size()-1;
+        Set<ContractInfo> before = app.contact().all();
+        ContractInfo modifyContact = before.iterator().next();
         ContractInfo contact = new ContractInfo().
-                whithFirstname("Fedor").whithMiddlename("Revov").whithLastname("Perfecto").whithNickname("Netu").whithCompanyWork("Neoflex")
-                .whithCityName("Saratov").whithFullAddress("City Saratov, House 3").whithFhoneNumber("+7923145444").whithEmail("stankevich@mail.ru")
-                .whithGroup("test1").whithId(before.get(index).getId());
-        app.contact().contactModify(index, contact);
-        List<ContractInfo> after = app.contact().list();
+                withFirstname("Fedor").withMiddlename("Revov").withLastname("Perfecto").withNickname("Netu").withCompanyWork("Neoflex")
+                .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+                .withGroup("test1").withId(modifyContact.getId());
+        app.contact().modify(contact);
+        Set<ContractInfo> after = app.contact().all();
         Assert.assertEquals(after.size(), before.size());
-        before.remove(index);
+        before.remove(modifyContact);
         before.add(contact);
-        Comparator<? super ContractInfo> byId = (q1, q2) -> Integer.compare(q1.getId(), q2.getId());
-        before.sort(byId);
-        after.sort(byId);
         Assert.assertEquals(after, before);
     }
 }

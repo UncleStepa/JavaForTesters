@@ -6,10 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContractInfo;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -46,9 +47,10 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void selectFirstContact(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
+
+    public void selectFirstContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']" )).click();}
+
 
     public void deleteOneContact() {
         click(By.xpath("//*[@id=\"content\"]/form[2]/div[2]/input"));
@@ -62,8 +64,8 @@ public class ContactHelper extends HelperBase {
         alert();
     }
 
-    public void selectEditContract(int index) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
+    public void selectEditContractById(int id) {
+        wd.findElement(By.cssSelector("a[href='edit.php?id="+ id +"']")).click();
     }
 
     public void updateModificationContract() {
@@ -77,16 +79,15 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-
-    public void contactModify(int index, ContractInfo contact) {
-        selectEditContract(index);
+    public void modify( ContractInfo contact) {
+        selectEditContractById(contact.getId());
         fillContactGroup(contact, false);
         updateModificationContract();
         returnToHomePage();
     }
 
-    public void delete(int index) {
-        selectFirstContact(index);
+    public void delete(ContractInfo contact) {
+        selectFirstContactById(contact.getId());
         deleteOneContact();
         submitDeleteContact();
         returnToHomePage();
@@ -96,16 +97,16 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
-  public List<ContractInfo> list() {
-      List<ContractInfo> contacts = new ArrayList<>();
-      List<WebElement> elements = wd.findElements(By.name("entry"));
-      for(WebElement element:elements){
-          int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-          String lastname = element.findElement(By.xpath(".//td[2]")).getText();
-          String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-          ContractInfo contact = new ContractInfo().whithFirstname(firstname).whithLastname(lastname).whithId(id);
-          contacts.add(contact);
-      }
-      return contacts;
-  }
+
+    public Set<ContractInfo> all() {
+        Set<ContractInfo> contacts = new HashSet<ContractInfo>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for(WebElement element : elements){
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            String lastname = element.findElement(By.xpath(".//td[2]")).getText();
+            String firstname = element.findElement(By.xpath(".//td[3]")).getText();
+            contacts.add(new ContractInfo().withId(id).withLastname(lastname).withFirstname(firstname));
+        }
+        return contacts;
+    }
 }
