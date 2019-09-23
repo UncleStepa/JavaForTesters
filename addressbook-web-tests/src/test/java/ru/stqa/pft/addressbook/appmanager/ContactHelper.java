@@ -77,6 +77,7 @@ public class ContactHelper extends HelperBase {
         goToContactCreationPage();
         fillContactGroup(contractInfo, creation);
         submitContactCreation();
+        contactsCashe = null;
         returnToHomePage();
     }
 
@@ -84,6 +85,7 @@ public class ContactHelper extends HelperBase {
         selectEditContractById(contact.getId());
         fillContactGroup(contact, false);
         updateModificationContract();
+        contactsCashe = null;
         returnToHomePage();
     }
 
@@ -91,6 +93,7 @@ public class ContactHelper extends HelperBase {
         selectFirstContactById(contact.getId());
         deleteOneContact();
         submitDeleteContact();
+        contactsCashe = null;
         returnToHomePage();
     }
 
@@ -98,16 +101,20 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
+    private Contacts contactsCashe = null;
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactsCashe != null) {
+            return new Contacts(contactsCashe);
+        }
+        contactsCashe = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for(WebElement element : elements){
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
             String lastname = element.findElement(By.xpath(".//td[2]")).getText();
             String firstname = element.findElement(By.xpath(".//td[3]")).getText();
-            contacts.add(new ContractInfo().withId(id).withLastname(lastname).withFirstname(firstname));
+            contactsCashe.add(new ContractInfo().withId(id).withLastname(lastname).withFirstname(firstname));
         }
-        return contacts;
+        return new Contacts(contactsCashe);
     }
 }
