@@ -97,6 +97,10 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public int count(){
+        return wd.findElements(By.name("entry")).size();
+    }
+
     public boolean isTeareContact() {
         return isElementPresent(By.name("selected[]"));
     }
