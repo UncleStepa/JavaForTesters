@@ -12,6 +12,11 @@ public class ContractInfo {
   private  String email;
   private String group;
   private int id = Integer.MAX_VALUE;
+  private String home_phone;
+  private String mobile_phone;
+  private String work_phone;
+
+
 
   public ContractInfo withFirstname(String firstname) {
     this.firstname = firstname;
@@ -53,6 +58,21 @@ public class ContractInfo {
     return this;
   }
 
+  public ContractInfo withHome_phone(String home_phone) {
+    this.home_phone = home_phone;
+    return this;
+  }
+
+  public ContractInfo withMobile_phone(String mobile_phone) {
+    this.mobile_phone = mobile_phone;
+    return this;
+  }
+
+  public ContractInfo withWork_phone(String work_phone) {
+    this.work_phone = work_phone;
+    return this;
+  }
+
   public ContractInfo withEmail(String email) {
     this.email = email;
     return this;
@@ -88,6 +108,40 @@ public class ContractInfo {
     return nickname;
   }
 
+  public String getCompanyWork() {
+    return companyWork;
+  }
+
+  public String getCityName() {
+    return cityName;
+  }
+
+  public String getFullAddress() {
+    return fullAddress;
+  }
+
+  public String getFhoneNumber() {
+    return fhoneNumber;
+  }
+
+  public String getHome_phone() {
+    return home_phone;
+  }
+
+  public String getMobile_phone() {
+    return mobile_phone;
+  }
+
+  public String getWork_phone() {
+    return work_phone;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public  String getGroup() { return  group;}
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -109,27 +163,7 @@ public class ContractInfo {
     return result;
   }
 
-  public String getCompanyWork() {
-    return companyWork;
-  }
 
-  public String getCityName() {
-    return cityName;
-  }
-
-  public String getFullAddress() {
-    return fullAddress;
-  }
-
-  public String getFhoneNumber() {
-    return fhoneNumber;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public  String getGroup() { return  group;}
 
   @Override
   public String toString() {
