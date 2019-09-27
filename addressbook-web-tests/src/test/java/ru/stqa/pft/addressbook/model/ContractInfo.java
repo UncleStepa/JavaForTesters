@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContractInfo {
   private  String firstname;
   private  String lastname;
@@ -15,6 +17,16 @@ public class ContractInfo {
   private String work_phone;
   private String allEmails;
 
+  public File getPhoto() {
+    return photo;
+  }
+
+  public ContractInfo withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
+  private File photo;
 
 
   public ContractInfo withFirstname(String firstname) {

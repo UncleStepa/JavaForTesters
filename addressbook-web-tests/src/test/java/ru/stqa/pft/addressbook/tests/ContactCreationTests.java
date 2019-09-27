@@ -4,6 +4,9 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.ContractInfo;
+
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -12,6 +15,7 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation()  {
     Contacts before = app.contact().all();
+    File photo = new File("src/test/resources/stru.png");
     ContractInfo contact = new ContractInfo()
             .withFirstname("Igor")
             .withLastname("Stankevich")
@@ -23,7 +27,8 @@ public class ContactCreationTests extends TestBase {
             .withEmail("reut@.ru")
             .withEmail1("1111@.gh")
             .withEmail2("zsdfsdfs@.ru")
-            .withGroup("test1");
+            .withGroup("test1")
+            .withPhoto(photo);
     app.contact().createContact(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();
