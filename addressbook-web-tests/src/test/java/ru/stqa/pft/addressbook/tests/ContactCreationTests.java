@@ -12,9 +12,14 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation()  {
     Contacts before = app.contact().all();
-    ContractInfo contact = new ContractInfo().
-            withFirstname("rebus").withMiddlename("tetrty").withLastname("Stankevich").withNickname("UncleStepa").withCompanyWork("Neoflex")
-            .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+    ContractInfo contact = new ContractInfo()
+            .withFirstname("Igor")
+            .withLastname("Stankevich")
+            .withFullAddress("Saratov")
+            .withHome_phone("1111")
+            .withMobile_phone("22222")
+            .withWork_phone("3333")
+            .withEmail("reut@.ru")
             .withGroup("test1");
     app.contact().createContact(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));

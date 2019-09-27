@@ -15,9 +15,14 @@ public class ContactModification extends TestBase {
     @BeforeMethod
     public void ensurePrecondition() {
         if (app.contact().all().size() == 0) {
-            app.contact().createContact(new ContractInfo().
-                    withFirstname("Vasya").withMiddlename("Igorevich").withLastname("Stankevich").withNickname("UncleStepa").withCompanyWork("Neoflex")
-                    .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+            app.contact().createContact(new ContractInfo()
+                    .withFirstname("Igor")
+                    .withLastname("Stankevich")
+                    .withFullAddress("Saratov")
+                    .withHome_phone("1111")
+                    .withMobile_phone("22222")
+                    .withWork_phone("3333")
+                    .withEmail("reut@.ru")
                     .withGroup("test1"), true);
         }
     }
@@ -27,9 +32,14 @@ public class ContactModification extends TestBase {
     public void testContactModification(){
         Contacts before = app.contact().all();
         ContractInfo modifyContact = before.iterator().next();
-        ContractInfo contact = new ContractInfo().
-                withFirstname("Fedor").withMiddlename("Revov").withLastname("Perfecto").withNickname("Netu").withCompanyWork("Neoflex")
-                .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+        ContractInfo contact = new ContractInfo()
+                .withFirstname("Vasya")
+                .withLastname("Revov")
+                .withFullAddress("SPB")
+                .withHome_phone("333")
+                .withMobile_phone("22222")
+                .withWork_phone("111")
+                .withEmail("modif@.ru")
                 .withGroup("test1").withId(modifyContact.getId());
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));

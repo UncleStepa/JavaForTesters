@@ -28,13 +28,11 @@ public class ContactHelper extends HelperBase {
 
     public void fillContactGroup(ContractInfo personInfo, boolean creation) {
         type(By.name("firstname"), personInfo.getFirstname());
-        type(By.name("middlename"), personInfo.getMiddlename());
         type(By.name("lastname"), personInfo.getLastname());
-        type(By.name("nickname"), personInfo.getNickname());
-        type(By.name("company"), personInfo.getCompanyWork());
-        type(By.name("home"), personInfo.getCityName());
         type(By.name("address"), personInfo.getFullAddress());
-        type(By.name("mobile"), personInfo.getFhoneNumber());
+        type(By.name("home"), personInfo.getHome_phone());
+        type(By.name("mobile"), personInfo.getMobile_phone());
+        type(By.name("work"), personInfo.getWork_phone());
         type(By.name("email"), personInfo.getEmail());
 
         if (creation) {

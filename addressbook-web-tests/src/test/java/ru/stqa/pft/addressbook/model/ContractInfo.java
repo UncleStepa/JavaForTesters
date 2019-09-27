@@ -96,25 +96,11 @@ public class ContractInfo {
     return firstname;
   }
 
-  public String getMiddlename() {
-    return middlename;
-  }
 
   public String getLastname() {
     return lastname;
   }
 
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getCompanyWork() {
-    return companyWork;
-  }
-
-  public String getCityName() {
-    return cityName;
-  }
 
   public String getFullAddress() {
     return fullAddress;
