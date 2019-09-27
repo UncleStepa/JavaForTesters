@@ -16,13 +16,15 @@ public class ContactModification extends TestBase {
     public void ensurePrecondition() {
         if (app.contact().all().size() == 0) {
             app.contact().createContact(new ContractInfo()
-                    .withFirstname("Igor")
-                    .withLastname("Stankevich")
-                    .withFullAddress("Saratov")
+                    .withFirstname("Vasya")
+                    .withLastname("Reytov")
+                    .withFullAddress("Rim")
                     .withHome_phone("1111")
                     .withMobile_phone("22222")
                     .withWork_phone("3333")
                     .withEmail("reut@.ru")
+                    .withEmail1("1111@.gh")
+                    .withEmail2("zsdfsdfs@.ru")
                     .withGroup("test1"), true);
         }
     }
@@ -40,6 +42,8 @@ public class ContactModification extends TestBase {
                 .withMobile_phone("22222")
                 .withWork_phone("111")
                 .withEmail("modif@.ru")
+                .withEmail1("53535@.gh")
+                .withEmail2("213123@.ru")
                 .withGroup("test1").withId(modifyContact.getId());
         app.contact().modify(contact);
         assertThat(app.contact().count(), equalTo(before.size()));

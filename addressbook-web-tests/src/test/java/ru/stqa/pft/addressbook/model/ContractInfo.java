@@ -2,19 +2,18 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContractInfo {
   private  String firstname;
-  private  String middlename;
   private  String lastname;
-  private  String nickname;
-  private  String companyWork;
-  private  String cityName;
   private  String fullAddress;
-  private  String fhoneNumber;
   private  String email;
+  private  String email1;
+  private  String email2;
   private String group;
+  private String allFhones;
   private int id = Integer.MAX_VALUE;
   private String home_phone;
   private String mobile_phone;
   private String work_phone;
+  private String allEmails;
 
 
 
@@ -23,40 +22,18 @@ public class ContractInfo {
     return this;
   }
 
-  public ContractInfo withMiddlename(String middlename) {
-    this.middlename = middlename;
-    return this;
-  }
 
   public ContractInfo withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-  public ContractInfo withNickname(String nickname) {
-    this.nickname = nickname;
-    return this;
-  }
-
-  public ContractInfo withCompanyWork(String companyWork) {
-    this.companyWork = companyWork;
-    return this;
-  }
-
-  public ContractInfo withCityName(String cityName) {
-    this.cityName = cityName;
-    return this;
-  }
 
   public ContractInfo withFullAddress(String fullAddress) {
     this.fullAddress = fullAddress;
     return this;
   }
 
-  public ContractInfo withFhoneNumber(String fhoneNumber) {
-    this.fhoneNumber = fhoneNumber;
-    return this;
-  }
 
   public ContractInfo withHome_phone(String home_phone) {
     this.home_phone = home_phone;
@@ -83,8 +60,28 @@ public class ContractInfo {
     return this;
   }
 
+  public ContractInfo setAllFhones(String allFhones) {
+    this.allFhones = allFhones;
+    return this;
+  }
+
   public ContractInfo withId(int id) {
     this.id = id;
+    return this;
+  }
+
+  public ContractInfo withEmail1(String email1) {
+    this.email1 = email1;
+    return this;
+  }
+
+  public ContractInfo withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public ContractInfo withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
     return this;
   }
 
@@ -106,9 +103,6 @@ public class ContractInfo {
     return fullAddress;
   }
 
-  public String getFhoneNumber() {
-    return fhoneNumber;
-  }
 
   public String getHome_phone() {
     return home_phone;
@@ -126,7 +120,23 @@ public class ContractInfo {
     return email;
   }
 
+  public String getEmail1() {
+    return email1;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public String getAllEmails() {
+    return allEmails;
+  }
+
   public  String getGroup() { return  group;}
+
+  public String getAllFhones() {
+    return allFhones;
+  }
 
   @Override
   public boolean equals(Object o) {

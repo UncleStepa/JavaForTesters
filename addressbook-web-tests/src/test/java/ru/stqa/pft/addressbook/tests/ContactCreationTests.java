@@ -15,11 +15,14 @@ public class ContactCreationTests extends TestBase {
     ContractInfo contact = new ContractInfo()
             .withFirstname("Igor")
             .withLastname("Stankevich")
-            .withFullAddress("Saratov")
+            .withFullAddress("Saratov, dom2, kv 123" +
+                    "Rumaniya")
             .withHome_phone("1111")
             .withMobile_phone("22222")
             .withWork_phone("3333")
             .withEmail("reut@.ru")
+            .withEmail1("1111@.gh")
+            .withEmail2("zsdfsdfs@.ru")
             .withGroup("test1");
     app.contact().createContact(contact, true);
     assertThat(app.contact().count(), equalTo(before.size() + 1));

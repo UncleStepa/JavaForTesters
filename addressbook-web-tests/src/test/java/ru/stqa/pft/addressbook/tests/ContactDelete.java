@@ -13,9 +13,14 @@ public class ContactDelete extends TestBase {
   @BeforeMethod
   public void ensurePrecondition() {
     if (app.contact().all().size() == 0) {
-      app.contact().createContact(new ContractInfo().
-              withFirstname("Vasya").withMiddlename("Igorevich").withLastname("Stankevich").withNickname("UncleStepa").withCompanyWork("Neoflex")
-              .withCityName("Saratov").withFullAddress("City Saratov, House 3").withFhoneNumber("+7923145444").withEmail("stankevich@mail.ru")
+      app.contact().createContact(new ContractInfo()
+              .withFirstname("Igor")
+              .withLastname("Stankevich")
+              .withFullAddress("Saratov")
+              .withHome_phone("1111")
+              .withMobile_phone("22222")
+              .withWork_phone("3333")
+              .withEmail("reut@.ru")
               .withGroup("test1"), true);
     }
   }
