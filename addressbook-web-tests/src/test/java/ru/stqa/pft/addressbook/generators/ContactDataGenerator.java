@@ -56,7 +56,7 @@ public class ContactDataGenerator {
               .withWork_phone(String.format("Work_phone %s",i))
               .withFullAddress(String.format("Address %s",i)).withEmail(String.format("Email %s",i))
               .withEmail1(String.format("Email1 %s",i)).withEmail2(String.format("Email2 %s",i))
-              .withGroup(String.format("Group %s",i)));
+              .withGroup(String.format("test %s",i)));
     }
     return contacts;
   }

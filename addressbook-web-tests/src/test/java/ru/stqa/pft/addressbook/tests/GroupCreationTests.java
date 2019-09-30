@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
@@ -18,10 +19,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
+  @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
     List<Object[]> list = new ArrayList<Object[]>();
     List<File> photo = new ArrayList<File>();
-    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.scv")));
     String line = reader.readLine();
     while (line != null) {
       String[] split = line.split(";");
