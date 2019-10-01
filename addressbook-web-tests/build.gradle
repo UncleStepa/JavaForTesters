@@ -11,4 +11,5 @@ dependencies{
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation 'org.hamcrest:hamcrest:2.1'
     compile group: 'com.beust', name: 'jcommander', version: '1.7'
+    compile 'com.thoughtworks.xstream:xstream:1.4.11.1'
 }

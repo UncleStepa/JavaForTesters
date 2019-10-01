@@ -1,8 +1,15 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.io.File;
 
+@XStreamAlias("contact")
 public class ContractInfo {
+
+  @XStreamOmitField
+  private int id = Integer.MAX_VALUE;
   private  String firstname;
   private  String lastname;
   private  String fullAddress;
@@ -11,7 +18,6 @@ public class ContractInfo {
   private  String email2;
   private String group;
   private String allFhones;
-  private int id = Integer.MAX_VALUE;
   private String home_phone;
   private String mobile_phone;
   private String work_phone;
