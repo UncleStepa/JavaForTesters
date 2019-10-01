@@ -51,19 +51,20 @@ public class ContactDataGenerator {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContractInfo.class);
     String xml = xstream.toXML (contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+      try(Writer writer = new FileWriter(file)) {
+          writer.write(xml);
+      }
   }
 
   private void saveAsCsv(List<ContractInfo> contacts, File file) throws IOException {
-    Writer writer = new FileWriter(file);
-    for (ContractInfo contact : contacts){
-      writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(),
-              contact.getHome_phone(), contact.getMobile_phone(),contact.getWork_phone(),contact.getFullAddress(),
-              contact.getEmail(),contact.getEmail1(),contact.getEmail2(),contact.getGroup()));
+      try(Writer writer = new FileWriter(file)) {
+          for (ContractInfo contact : contacts) {
+              writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(),
+                      contact.getHome_phone(), contact.getMobile_phone(), contact.getWork_phone(), contact.getFullAddress(),
+                      contact.getEmail(), contact.getEmail1(), contact.getEmail2(), contact.getGroup()));
+          }
     }
-    writer.close();
+
   }
 
   private  List<ContractInfo> generateContacts (int count) {
