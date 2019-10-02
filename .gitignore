@@ -26,3 +26,5 @@ addressbook-web-tests/build/
 addressbook-web-tests/\.idea/
 
 \.idea/
+
+*.log

@@ -44,7 +44,6 @@ public class GroupCreationTests extends TestBase {
 
   @Test (dataProvider = "validGroups")
   public void testGroupCreation(GroupData group) throws Exception {
-    logger.info("Start test tetGroupCreation");
     app.goTo().groupPage();
     Groups before = app.group().all();
     app.group().create(group);
@@ -52,7 +51,6 @@ public class GroupCreationTests extends TestBase {
     Groups after = app.group().all();
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-    logger.info("Stop test tetGroupCreation");
 }
 
 
