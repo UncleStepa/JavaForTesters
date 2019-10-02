@@ -12,6 +12,8 @@ dependencies{
     testImplementation 'org.hamcrest:hamcrest:2.1'
     compile group: 'com.beust', name: 'jcommander', version: '1.7'
     compile 'com.thoughtworks.xstream:xstream:1.4.11.1'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
 }
 
 task testContacts (type: Test) {
