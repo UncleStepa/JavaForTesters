@@ -23,16 +23,4 @@
     <mobile__phone>Mobile_phone 1</mobile__phone>
     <work__phone>Work_phone 1</work__phone>
   </contact>
-  <contact>
-    <firstname>Firstname 2</firstname>
-    <lastname>Lastname 2</lastname>
-    <fullAddress>Address 2</fullAddress>
-    <email>Email 2</email>
-    <email1>Email1 2</email1>
-    <email2>Email2 2</email2>
-    <group>test 2</group>
-    <home__phone>Home_phone 2</home__phone>
-    <mobile__phone>Mobile_phone 2</mobile__phone>
-    <work__phone>Work_phone 2</work__phone>
-  </contact>
 </list>
