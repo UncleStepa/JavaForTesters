@@ -2,56 +2,90 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-
+import org.hibernate.annotations.Type;
+import javax.persistence.*;
 import java.io.File;
 
+@Entity
+@Table(name = "addressbook")
 @XStreamAlias("contact")
 public class ContractInfo {
 
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+
+  @Column(name = "firstname")
   private  String firstname;
+
+  @Column(name = "lastname")
   private  String lastname;
+
+  @Column(name = "address")
+  @Type(type = "text")
   private  String fullAddress;
+
+  @Column(name = "email")
+  @Type(type = "text")
   private  String email;
+
+  @Column(name = "email2")
+  @Type(type = "text")
   private  String email1;
+
+  @Column(name = "email3")
+  @Type(type = "text")
   private  String email2;
+
+  @Transient
   private String group;
+
+  @Transient
   private String allFhones;
+
+  @Column(name = "home")
+  @Type(type = "text")
   private String home_phone;
+
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile_phone;
+
+  @Column(name = "work")
+  @Type(type = "text")
   private String work_phone;
+
+  @Transient
   private String allEmails;
 
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
+
   public File getPhoto() {
-    return photo;
+    return new File (photo);
   }
 
   public ContractInfo withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
-
-  private File photo;
-
 
   public ContractInfo withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }
 
-
   public ContractInfo withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-
   public ContractInfo withFullAddress(String fullAddress) {
     this.fullAddress = fullAddress;
     return this;
   }
-
 
   public ContractInfo withHome_phone(String home_phone) {
     this.home_phone = home_phone;
@@ -111,16 +145,13 @@ public class ContractInfo {
     return firstname;
   }
 
-
   public String getLastname() {
     return lastname;
   }
 
-
   public String getFullAddress() {
     return fullAddress;
   }
-
 
   public String getHome_phone() {
     return home_phone;
@@ -176,7 +207,6 @@ public class ContractInfo {
     result = 31 * result + id;
     return result;
   }
-
 
 
   @Override
