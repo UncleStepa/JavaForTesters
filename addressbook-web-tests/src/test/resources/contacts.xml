@@ -10,17 +10,6 @@
     <home__phone>Home_phone 0</home__phone>
     <mobile__phone>Mobile_phone 0</mobile__phone>
     <work__phone>Work_phone 0</work__phone>
-  </contact>
-  <contact>
-    <firstname>Firstname 1</firstname>
-    <lastname>Lastname 1</lastname>
-    <fullAddress>Address 1</fullAddress>
-    <email>Email 1</email>
-    <email1>Email1 1</email1>
-    <email2>Email2 1</email2>
-    <group>test 1</group>
-    <home__phone>Home_phone 1</home__phone>
-    <mobile__phone>Mobile_phone 1</mobile__phone>
-    <work__phone>Work_phone 1</work__phone>
+    <photo>src\test\resources\stru.png</photo>
   </contact>
 </list>

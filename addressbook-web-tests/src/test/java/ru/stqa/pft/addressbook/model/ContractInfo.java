@@ -64,7 +64,7 @@ public class ContractInfo {
   private String photo;
 
   public File getPhoto() {
-    return new File (photo);
+    return new File(photo);
   }
 
   public ContractInfo withPhoto(File photo) {

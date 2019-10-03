@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
+import java.util.Objects;
+
 @XStreamAlias("group")
 @Entity
 @Table(name = "group_list")
@@ -43,18 +45,17 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
 
-    GroupData groupData = (GroupData) o;
-
-    if (id != groupData.id) return false;
-    return name != null ? name.equals(groupData.name) : groupData.name == null;
+    GroupData groupDate = (GroupData) o;
+    return id == groupDate.id &&
+            Objects.equals(name, groupDate.name) &&
+            Objects.equals(header, groupDate.header) &&
+            Objects.equals(footer, groupDate.footer);
 
   }
 
   @Override
   public int hashCode() {
-    int result = id;
-    result = 31 * result + (name != null ? name.hashCode() : 0);
-    return result;
+    return Objects.hash(id, name, header, footer);
   }
 
   public int getId() {
